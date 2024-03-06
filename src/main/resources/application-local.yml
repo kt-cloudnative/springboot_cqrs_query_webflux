@@ -17,6 +17,8 @@ spring:
 #r2dbc
   r2dbc:
     url: r2dbc:h2:mem:///./testdb
+    usename: sa
+    password:
 
 # spring boot - actuator expose
 management:
@@ -56,3 +58,8 @@ springdoc:
 logging:
   level:
     com.kt.edu: trace
+    org:
+      springframework:
+        r2dbc:
+          core:
+            DefaultDatabaseClient: debug

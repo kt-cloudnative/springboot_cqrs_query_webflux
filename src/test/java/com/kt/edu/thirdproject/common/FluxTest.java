@@ -60,7 +60,8 @@ public class FluxTest {
                 .collect(Collectors.toList());
         System.out.println("FilteredList : " + FilteredList);
 
-        //Flux<String> flux = Flux.fromArray(names.toArray()).log();
+        Flux<String> flux = Flux.fromIterable(names).log();
+        flux.subscribe(System.out::println);
         //flux.subscribe(names::add);
         //assertEquals(names, Arrays.asList("자바","스칼라","파이썬"));
     }
