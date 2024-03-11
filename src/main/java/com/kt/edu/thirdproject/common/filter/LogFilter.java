@@ -7,6 +7,10 @@ import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 @Slf4j
 @Component
 public class LogFilter implements WebFilter {
@@ -15,6 +19,9 @@ public class LogFilter implements WebFilter {
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
         long startTime = System.currentTimeMillis();
         String path = exchange.getRequest().getURI().getPath();
+
+        exchange.getRequest().getHeaders().entrySet().forEach(e ->
+                log.info("Request Headers '{}' : '{}'",e.getKey(),e.getValue()));
 
         log.info("Serving '{}'", path);
 
